@@ -4,3 +4,9 @@ const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
+
+class Field {
+    constructor(fieldArray) { //fieldArray will be an array of row-length arrays of the above turf and hole characters
+
+    }
+}
