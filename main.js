@@ -22,3 +22,6 @@ class Field {
         }
     }
 }
+
+const level1 = new Field(field1);
+level1.print();
