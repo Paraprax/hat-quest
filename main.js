@@ -5,7 +5,7 @@ const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
 
-const myField = new Field([
+const field1 = new Field([
     ['*', '░', 'O'],
     ['░', 'O', '░'],
     ['░', '^', '░'],
@@ -13,6 +13,12 @@ const myField = new Field([
 
 class Field {
     constructor(fieldArray) { //fieldArray will be an array of row-length arrays of the above turf and hole characters
+        this.fieldArray = fieldArray;
+    }
 
+    print() {
+        for (var i = 0; i < this.fieldArray.length; i++) {
+            console.log(this.fieldArray[i]);
+        }
     }
 }
