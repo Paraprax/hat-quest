@@ -15,6 +15,8 @@ class Field {
   constructor(fieldArray) {
     //fieldArray will be an array of row-length arrays of the above turf and hole characters
     this.fieldArray = fieldArray;
+    this.xCoord = [0];
+    this.yCoord = [0];
   }
 
   print() {
@@ -24,6 +26,21 @@ class Field {
         string += this.fieldArray[i][j];
       }
       console.log(string);
+    }
+  }
+
+  move(direction) {
+    switch (direction) {
+      case "N":
+        break;
+      case "E":
+        break;
+      case "S":
+        break;
+      case "W":
+        break;
+      default:
+        break;
     }
   }
 
@@ -38,6 +55,7 @@ class Field {
     ) {
       direction = direction.toUpperCase();
       console.log(`You have selected ${direction}`);
+      //move();
     } else {
       console.log("Please enter a valid cardinal direction.");
       this.startGame();
