@@ -21,21 +21,6 @@ class Field {
     this.gameOn = true;
   }
 
-  static generateField(rows, cols) {
-    let row = [];
-    //push one turf tile to an array for each column:
-    for (var i = 0; i < cols; i++) {
-      row.push("░");
-    }
-
-    //push row arrays to the field array:
-    for (var i = 0; i < rows; i++) {
-      this.field.push(row);
-    }
-
-    print(this.field);
-  }
-
   print() {
     for (var i = 0; i < this.fieldArray.length; i++) {
       let string = "";
@@ -76,14 +61,14 @@ class Field {
       console.log("Fell off the map! Game over!");
       this.gameOn = false;
       return;
-    } else if (this.fieldArray[this.yCoord][this.xCoord] == "O") {
+    } else if (this.fieldArray[this.yCoord][this.xCoord] == hole) {
       //end the game if the player went in a hole:
       console.log("Fell through a hole! Game over!");
       this.fieldArray[this.yCoord][this.xCoord] = "⍟";
       this.print(this.fieldArray);
       this.gameOn = false;
       return;
-    } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
+    } else if (this.fieldArray[this.yCoord][this.xCoord] == hat) {
       //win the game if the player found the hat:
       console.log("Hat found! You win!");
       this.fieldArray[this.yCoord][this.xCoord] = "♔";
@@ -92,7 +77,7 @@ class Field {
       return;
     } else {
       //otherwise, replace the tile where the player is with the player token:
-      this.fieldArray[this.yCoord][this.xCoord] = "*";
+      this.fieldArray[this.yCoord][this.xCoord] = pathCharacter;
       this.print(this.fieldArray);
     }
   }
