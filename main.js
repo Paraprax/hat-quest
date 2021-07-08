@@ -28,7 +28,20 @@ class Field {
   }
 
   startGame() {
-    prompt("Hello");
+    console.log("Welcome to the field. Which way do you want to go?");
+    let direction = prompt("[Enter 'N', 'E', 'S', or 'W'.] ");
+    if (
+      direction == "n" ||
+      direction == "e" ||
+      direction == "s" ||
+      direction == "w"
+    ) {
+      direction = direction.toUpperCase();
+      console.log(`You have selected ${direction}`);
+    } else {
+      console.log("Please enter a valid cardinal direction.");
+      this.startGame();
+    }
   }
 }
 
