@@ -32,12 +32,16 @@ class Field {
   move(direction) {
     switch (direction) {
       case "N":
+        this.yCoord -= 1;
         break;
       case "E":
+        this.xCoord += 1;
         break;
       case "S":
+        this.yCoord += 1;
         break;
       case "W":
+        this.xCoord -= 1;
         break;
       default:
         break;
@@ -55,7 +59,7 @@ class Field {
     ) {
       direction = direction.toUpperCase();
       console.log(`You have selected ${direction}`);
-      //move();
+      move(direction);
     } else {
       console.log("Please enter a valid cardinal direction.");
       this.startGame();
