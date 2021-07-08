@@ -48,6 +48,23 @@ class Field {
     }
 
     console.log(`x: ${this.xCoord}, y: ${this.yCoord}`);
+
+    //end the game if the player went off-map:
+    if (
+      this.xCoord < 0 ||
+      this.yCoord < 0 ||
+      this.xCoord > this.fieldArray[0].length ||
+      this.yCoord > this.fieldArray.length - 1
+    ) {
+      console.log("Game over!");
+      return;
+      //win the game if the player found the hat:
+    } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
+      console.log("Hat found! You win!");
+    } else {
+      //otherwise, replace the tile where the player is with the player token:
+      this.fieldArray[this.yCoord][this.xCoord] = "*";
+    }
   }
 
   startGame() {
@@ -65,6 +82,7 @@ class Field {
       console.log(`You have selected ${direction}`);
       //send the direction to the 'move' method:
       this.move(direction);
+      this.startGame();
     } else {
       //recursion if they picked anything other than NESW:
       console.log("Please enter a valid cardinal direction.");
