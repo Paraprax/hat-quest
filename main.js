@@ -17,6 +17,7 @@ class Field {
     this.fieldArray = fieldArray;
     this.xCoord = 0;
     this.yCoord = 0;
+    this.gameOn = true;
   }
 
   print() {
@@ -57,16 +58,20 @@ class Field {
       this.yCoord > this.fieldArray.length - 1
     ) {
       console.log("Fell off the map! Game over!");
+      this.gameOn = false;
       return;
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "O") {
       //end the game if the player went in a hole:
       console.log("Fell through a hole! Game over!");
+      this.gameOn = false;
       return;
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
       //win the game if the player found the hat:
       console.log("Hat found! You win!");
       this.fieldArray[this.yCoord][this.xCoord] = "♔";
       this.print(this.fieldArray);
+      this.gameOn = false;
+      return;
     } else {
       //otherwise, replace the tile where the player is with the player token:
       this.fieldArray[this.yCoord][this.xCoord] = "*";
@@ -74,31 +79,35 @@ class Field {
     }
   }
 
-  playGame() {
-    let direction = prompt("[Enter 'N', 'E', 'S', or 'W'.] ");
-    //validate that the user picked a cardinal direction:
-    if (
-      direction == "n" ||
-      direction == "e" ||
-      direction == "s" ||
-      direction == "w"
-    ) {
-      direction = direction.toUpperCase();
-      console.log(`You have selected ${direction}`);
-      //send the direction to the 'move' method:
-      this.move(direction);
-      this.playGame();
+  playGame(gameStatus) {
+    if (gameStatus == true) {
+      let direction = prompt("[Enter 'N', 'E', 'S', or 'W'.] ");
+      //validate that the user picked a cardinal direction:
+      if (
+        direction == "n" ||
+        direction == "e" ||
+        direction == "s" ||
+        direction == "w"
+      ) {
+        direction = direction.toUpperCase();
+        console.log(`You have selected ${direction}`);
+        //send the direction to the 'move' method:
+        this.move(direction);
+        this.playGame(this.gameOn);
+      } else {
+        //recursion if they picked anything other than NESW:
+        console.log("Please enter a valid cardinal direction.");
+        this.playGame(this.gameOn);
+      }
     } else {
-      //recursion if they picked anything other than NESW:
-      console.log("Please enter a valid cardinal direction.");
-      this.playGame();
+      return;
     }
   }
 
   startGame() {
     console.log("Welcome to the field. Which way do you want to go?");
     //accept input:
-    this.playGame();
+    this.playGame(this.gameOn);
   }
 }
 
