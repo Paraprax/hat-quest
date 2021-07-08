@@ -26,7 +26,11 @@ class Field {
       console.log(string);
     }
   }
+
+  startGame() {
+    prompt("Hello");
+  }
 }
 
 const level1 = new Field(field1);
-level1.print();
+level1.startGame();
