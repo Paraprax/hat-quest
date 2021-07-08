@@ -65,6 +65,8 @@ class Field {
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
       //win the game if the player found the hat:
       console.log("Hat found! You win!");
+      this.fieldArray[this.yCoord][this.xCoord] = "♔";
+      this.print(this.fieldArray);
     } else {
       //otherwise, replace the tile where the player is with the player token:
       this.fieldArray[this.yCoord][this.xCoord] = "*";
