@@ -58,7 +58,7 @@ class Field {
     ) {
       console.log("Fell off the map! Game over!");
       return;
-    } else if ((this.fieldArray[this.yCoord][this.xCoord] = "O")) {
+    } else if (this.fieldArray[this.yCoord][this.xCoord] == "O") {
       //end the game if the player went in a hole:
       console.log("Fell through a hole! Game over!");
       return;
