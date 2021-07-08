@@ -63,6 +63,8 @@ class Field {
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "O") {
       //end the game if the player went in a hole:
       console.log("Fell through a hole! Game over!");
+      this.fieldArray[this.yCoord][this.xCoord] = "⍟";
+      this.print(this.fieldArray);
       this.gameOn = false;
       return;
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
