@@ -15,8 +15,8 @@ class Field {
   constructor(fieldArray) {
     //fieldArray will be an array of row-length arrays of the above turf and hole characters
     this.fieldArray = fieldArray;
-    this.xCoord = [0];
-    this.yCoord = [0];
+    this.xCoord = 0;
+    this.yCoord = 0;
   }
 
   print() {
