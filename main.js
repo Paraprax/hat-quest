@@ -56,10 +56,14 @@ class Field {
       this.xCoord > this.fieldArray[0].length ||
       this.yCoord > this.fieldArray.length - 1
     ) {
-      console.log("Game over!");
+      console.log("Fell off the map! Game over!");
       return;
-      //win the game if the player found the hat:
+    } else if ((this.fieldArray[this.yCoord][this.xCoord] = "0")) {
+      //end the game if the player went in a hole:
+      console.log("Fell through a hole! Game over!");
+      return;
     } else if (this.fieldArray[this.yCoord][this.xCoord] == "^") {
+      //win the game if the player found the hat:
       console.log("Hat found! You win!");
     } else {
       //otherwise, replace the tile where the player is with the player token:
