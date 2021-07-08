@@ -74,9 +74,7 @@ class Field {
     }
   }
 
-  startGame() {
-    console.log("Welcome to the field. Which way do you want to go?");
-    //accept input:
+  playGame() {
     let direction = prompt("[Enter 'N', 'E', 'S', or 'W'.] ");
     //validate that the user picked a cardinal direction:
     if (
@@ -89,12 +87,18 @@ class Field {
       console.log(`You have selected ${direction}`);
       //send the direction to the 'move' method:
       this.move(direction);
-      this.startGame();
+      this.playGame();
     } else {
       //recursion if they picked anything other than NESW:
       console.log("Please enter a valid cardinal direction.");
-      this.startGame();
+      this.playGame();
     }
+  }
+
+  startGame() {
+    console.log("Welcome to the field. Which way do you want to go?");
+    //accept input:
+    this.playGame();
   }
 }
 
