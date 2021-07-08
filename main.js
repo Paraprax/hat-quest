@@ -5,19 +5,31 @@ const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
 
-const field1 = [
-  ["*", "░", "O"],
-  ["░", "O", "░"],
-  ["░", "^", "░"],
-];
-
 class Field {
-  constructor(fieldArray) {
+  constructor(rows, cols) {
     //fieldArray will be an array of row-length arrays of the above turf and hole characters
-    this.fieldArray = fieldArray;
+    this.fieldArray = [];
+    this.rows = rows;
+    this.cols = cols;
     this.xCoord = 0;
     this.yCoord = 0;
     this.gameOn = true;
+  }
+
+  generateField(rows, cols) {
+    console.log("field generated");
+    let row = [];
+    //push one turf tile to an array for each column:
+    for (var i = 0; i < cols; i++) {
+      row.push("░");
+    }
+
+    //push row arrays to the field array:
+    for (var i = 0; i < rows; i++) {
+      this.fieldArray.push(row);
+    }
+
+    this.print(this.field);
   }
 
   print() {
@@ -107,11 +119,12 @@ class Field {
   }
 
   startGame() {
+    this.generateField(this.rows, this.cols);
     console.log("Welcome to the field. Which way do you want to go?");
     //accept input:
     this.playGame(this.gameOn);
   }
 }
 
-const level1 = new Field(field1);
+const level1 = new Field(3, 3);
 level1.startGame();
