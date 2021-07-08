@@ -68,6 +68,7 @@ class Field {
     } else {
       //otherwise, replace the tile where the player is with the player token:
       this.fieldArray[this.yCoord][this.xCoord] = "*";
+      this.print(this.fieldArray);
     }
   }
 
